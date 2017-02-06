@@ -83,6 +83,11 @@ namespace Assignment2
             amountDueBox.Text = FormatCurrency(Convert.ToString(_due));
         }
 
+        /// <summary>
+        /// the clear button clears the text field of different labels 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClearButton_Click(object sender, EventArgs e)
         {
             // set all textboxes to default value
@@ -103,7 +108,7 @@ namespace Assignment2
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void CheckedChangedHandler(object sender, EventArgs e)
@@ -174,7 +179,12 @@ namespace Assignment2
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This program calculates the amount due on a New or Used Vehicle", "About", MessageBoxButtons.OK);
+            // MessageBox.Show("This program calculates the amount due on a New or Used Vehicle", "About", MessageBoxButtons.OK);
+
+            AboutForm aboutForm = new AboutForm();
+
+            // show the about form with showdialog(a modal method to display the form)
+            aboutForm.ShowDialog();
         }
 
         // Reused helper functions from Assignment 1
