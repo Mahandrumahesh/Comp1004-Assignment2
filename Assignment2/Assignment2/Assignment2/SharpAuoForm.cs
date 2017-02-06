@@ -120,29 +120,36 @@ namespace Assignment2
             const double _matted = 550.25;
 
             // For every accessory that is checked, add it's price to the optionsTotal
-            if (StereoCheckBox.Checked)
+            if (stereoCheckBox.Checked)
             {
-                optionsTotal += STEREOPRICE;
+                optionsTotal += _stereoSystem;
             }
-            if (LeatherCheckBox.Checked)
+            if (leatherCheckBox.Checked)
             {
-                optionsTotal += LEATHERPRICE;
+                optionsTotal += _leatherInterior;
             }
-            if (ComputerCheckBox.Checked)
+            if (computerCheckBox.Checked)
             {
-                optionsTotal += NAVPRICE;
+                optionsTotal += _computerNavigation;
             }
-            if (DetailingRadioButton.Checked)
+            if (nosCheckBox.Checked)
             {
-                optionsTotal += DETAILPRICE;
+                optionsTotal += _nos;
             }
-            if (PearlizedRadioButton.Checked)
+            if (detailingRadioButton.Checked)
             {
-                optionsTotal += PEARLPRICE;
+                optionsTotal += _customizedDetailing;
             }
-
+            if (pearlizedRadioButton.Checked)
+            {
+                optionsTotal += _pearlized;
+            }
+            if (mattedRadioButton.Checked)
+            {
+                optionsTotal += _matted;
+            }
             // display the total options amount in the appropriate TextBox
-            OptionsBox.Text = FormatCurrency(optionsTotal.ToString());
+            optionsBox.Text = FormatCurrency(optionsTotal.ToString());
         }
 
         private double calculateTax(double subtotal)
@@ -154,15 +161,15 @@ namespace Assignment2
         private void fontToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fontDialog1.ShowDialog();
-            BasePriceBox.Font = fontDialog1.Font;
-            AmountDueBox.Font = fontDialog1.Font;
+            basePriceBox.Font = fontDialog1.Font;
+            amountDueBox.Font = fontDialog1.Font;
         }
 
         private void colourToolStripMenuItem_Click(object sender, EventArgs e)
         {
             colorDialog1.ShowDialog();
-            BasePriceBox.BackColor = colorDialog1.Color;
-            AmountDueBox.BackColor = colorDialog1.Color;
+            basePriceBox.BackColor = colorDialog1.Color;
+            amountDueBox.BackColor = colorDialog1.Color;
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -224,7 +231,7 @@ namespace Assignment2
             if (cents != "noCents")
             {
                 // If there are cents to add...
-                if (cents.Length == 1 && this.ActiveControl != BasePriceBox && this.ActiveControl != AllowanceBox)
+                if (cents.Length == 1 && this.ActiveControl != basePriceBox && this.ActiveControl != allowanceBox)
                 {
                     // If there's no trailing zero and focus left, add one
                     cents = cents + "0";
