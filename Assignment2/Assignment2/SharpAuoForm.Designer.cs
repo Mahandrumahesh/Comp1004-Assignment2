@@ -62,14 +62,14 @@
             this.colorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.amountDueLabel = new System.Windows.Forms.Label();
             this.amountDueBox = new System.Windows.Forms.TextBox();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.colorDialog = new System.Windows.Forms.ColorDialog();
+            this.fontDialog = new System.Windows.Forms.FontDialog();
             this.itemsGroupBox.SuspendLayout();
             this.exteriorGroupBox.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // priceLabel
@@ -137,7 +137,7 @@
             this.basePriceBox.Name = "basePriceBox";
             this.basePriceBox.Size = new System.Drawing.Size(126, 20);
             this.basePriceBox.TabIndex = 6;
-            this.basePriceBox.TextChanged += new System.EventHandler(this.PriceBox_TextChanged);
+            this.basePriceBox.TextChanged += new System.EventHandler(this._PriceBox_TextChanged);
             // 
             // optionsBox
             // 
@@ -147,7 +147,7 @@
             this.optionsBox.ReadOnly = true;
             this.optionsBox.Size = new System.Drawing.Size(126, 20);
             this.optionsBox.TabIndex = 7;
-            this.optionsBox.TextChanged += new System.EventHandler(this.PriceBox_TextChanged);
+            this.optionsBox.TextChanged += new System.EventHandler(this._PriceBox_TextChanged);
             // 
             // subTotalBox
             // 
@@ -172,7 +172,7 @@
             this.allowanceBox.Size = new System.Drawing.Size(126, 20);
             this.allowanceBox.TabIndex = 10;
             this.allowanceBox.Text = "0";
-            this.allowanceBox.TextChanged += new System.EventHandler(this.PriceBox_TextChanged);
+            this.allowanceBox.TextChanged += new System.EventHandler(this._PriceBox_TextChanged);
             // 
             // totalBox
             // 
@@ -206,7 +206,7 @@
             this.nosCheckBox.TabIndex = 3;
             this.nosCheckBox.Text = "NoS";
             this.nosCheckBox.UseVisualStyleBackColor = true;
-            this.nosCheckBox.CheckedChanged += new System.EventHandler(this.CheckedChangedHandler);
+            this.nosCheckBox.CheckedChanged += new System.EventHandler(this._CheckedChangedHandler);
             // 
             // computerCheckBox
             // 
@@ -218,7 +218,7 @@
             this.computerCheckBox.TabIndex = 2;
             this.computerCheckBox.Text = "Computer Navigation";
             this.computerCheckBox.UseVisualStyleBackColor = true;
-            this.computerCheckBox.CheckedChanged += new System.EventHandler(this.CheckedChangedHandler);
+            this.computerCheckBox.CheckedChanged += new System.EventHandler(this._CheckedChangedHandler);
             // 
             // leatherCheckBox
             // 
@@ -230,7 +230,7 @@
             this.leatherCheckBox.TabIndex = 1;
             this.leatherCheckBox.Text = "Leather Interior";
             this.leatherCheckBox.UseVisualStyleBackColor = true;
-            this.leatherCheckBox.CheckedChanged += new System.EventHandler(this.CheckedChangedHandler);
+            this.leatherCheckBox.CheckedChanged += new System.EventHandler(this._CheckedChangedHandler);
             // 
             // stereoCheckBox
             // 
@@ -242,7 +242,7 @@
             this.stereoCheckBox.TabIndex = 0;
             this.stereoCheckBox.Text = "Stereo System";
             this.stereoCheckBox.UseVisualStyleBackColor = true;
-            this.stereoCheckBox.CheckedChanged += new System.EventHandler(this.CheckedChangedHandler);
+            this.stereoCheckBox.CheckedChanged += new System.EventHandler(this._CheckedChangedHandler);
             // 
             // exteriorGroupBox
             // 
@@ -269,7 +269,7 @@
             this.mattedRadioButton.TabStop = true;
             this.mattedRadioButton.Text = "Matted ";
             this.mattedRadioButton.UseVisualStyleBackColor = true;
-            this.mattedRadioButton.CheckedChanged += new System.EventHandler(this.CheckedChangedHandler);
+            this.mattedRadioButton.CheckedChanged += new System.EventHandler(this._CheckedChangedHandler);
             // 
             // detailingRadioButton
             // 
@@ -282,7 +282,7 @@
             this.detailingRadioButton.TabStop = true;
             this.detailingRadioButton.Text = "Customized Detailing";
             this.detailingRadioButton.UseVisualStyleBackColor = true;
-            this.detailingRadioButton.CheckedChanged += new System.EventHandler(this.CheckedChangedHandler);
+            this.detailingRadioButton.CheckedChanged += new System.EventHandler(this._CheckedChangedHandler);
             // 
             // pearlizedRadioButton
             // 
@@ -295,7 +295,7 @@
             this.pearlizedRadioButton.TabStop = true;
             this.pearlizedRadioButton.Text = "Pearlized";
             this.pearlizedRadioButton.UseVisualStyleBackColor = true;
-            this.pearlizedRadioButton.CheckedChanged += new System.EventHandler(this.CheckedChangedHandler);
+            this.pearlizedRadioButton.CheckedChanged += new System.EventHandler(this._CheckedChangedHandler);
             // 
             // standardRadioButton
             // 
@@ -309,7 +309,7 @@
             this.standardRadioButton.TabStop = true;
             this.standardRadioButton.Text = "Standard";
             this.standardRadioButton.UseVisualStyleBackColor = true;
-            this.standardRadioButton.CheckedChanged += new System.EventHandler(this.CheckedChangedHandler);
+            this.standardRadioButton.CheckedChanged += new System.EventHandler(this._CheckedChangedHandler);
             // 
             // calculateButton
             // 
@@ -320,7 +320,7 @@
             this.calculateButton.TabIndex = 14;
             this.calculateButton.Text = "Calculate";
             this.calculateButton.UseVisualStyleBackColor = true;
-            this.calculateButton.Click += new System.EventHandler(this.CalculateButton_Click);
+            this.calculateButton.Click += new System.EventHandler(this._CalculateButton_Click);
             // 
             // clearButton
             // 
@@ -331,7 +331,7 @@
             this.clearButton.TabIndex = 15;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            this.clearButton.Click += new System.EventHandler(this._ClearButton_Click);
             // 
             // exitButton
             // 
@@ -342,7 +342,7 @@
             this.exitButton.TabIndex = 16;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            this.exitButton.Click += new System.EventHandler(this._ExitButton_Click);
             // 
             // fileToolStripMenuItem
             // 
@@ -350,14 +350,14 @@
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
+            this.fileToolStripMenuItem.Text = "&File";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitButton_Click);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Text = "&Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this._ExitButton_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -368,35 +368,35 @@
             this.colorToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Text = "&Edit";
             // 
             // calculateToolStripMenuItem
             // 
             this.calculateToolStripMenuItem.Name = "calculateToolStripMenuItem";
-            this.calculateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.calculateToolStripMenuItem.Text = "Calculate";
-            this.calculateToolStripMenuItem.Click += new System.EventHandler(this.CalculateButton_Click);
+            this.calculateToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.calculateToolStripMenuItem.Text = "&Calculate";
+            this.calculateToolStripMenuItem.Click += new System.EventHandler(this._CalculateButton_Click);
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.clearToolStripMenuItem.Text = "Clear";
-            this.clearToolStripMenuItem.Click += new System.EventHandler(this.ClearButton_Click);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.clearToolStripMenuItem.Text = "&Clear";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this._ClearButton_Click);
             // 
             // fontToolStripMenuItem
             // 
             this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.fontToolStripMenuItem.Text = "Font";
-            this.fontToolStripMenuItem.Click += new System.EventHandler(this.fontToolStripMenuItem_Click);
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.fontToolStripMenuItem.Text = "&Font";
+            this.fontToolStripMenuItem.Click += new System.EventHandler(this._fontToolStripMenuItem_Click);
             // 
             // colorToolStripMenuItem
             // 
             this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            this.colorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.colorToolStripMenuItem.Text = "Color";
-            this.colorToolStripMenuItem.Click += new System.EventHandler(this.colourToolStripMenuItem_Click);
+            this.colorToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.colorToolStripMenuItem.Text = "&Color";
+            this.colorToolStripMenuItem.Click += new System.EventHandler(this._colourToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -404,26 +404,26 @@
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Text = "&Help";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
             this.helpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(540, 24);
-            this.menuStrip1.TabIndex = 17;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(540, 24);
+            this.menuStrip.TabIndex = 17;
+            this.menuStrip.Text = "menuStrip1";
             // 
             // amountDueLabel
             // 
@@ -445,8 +445,7 @@
             // 
             // SharpAuoForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(540, 397);
             this.Controls.Add(this.amountDueBox);
             this.Controls.Add(this.amountDueLabel);
@@ -467,18 +466,18 @@
             this.Controls.Add(this.subTotalLabel);
             this.Controls.Add(this.optionsLabel);
             this.Controls.Add(this.priceLabel);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.menuStrip);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
             this.Name = "SharpAuoForm";
             this.Text = "Auto Center";
-            this.Load += new System.EventHandler(this.SharpAuoForm_Load);
             this.itemsGroupBox.ResumeLayout(false);
             this.itemsGroupBox.PerformLayout();
             this.exteriorGroupBox.ResumeLayout(false);
             this.exteriorGroupBox.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -520,11 +519,11 @@
         private System.Windows.Forms.ToolStripMenuItem colorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.Label amountDueLabel;
         private System.Windows.Forms.TextBox amountDueBox;
-        private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.FontDialog fontDialog1;
+        private System.Windows.Forms.ColorDialog colorDialog;
+        private System.Windows.Forms.FontDialog fontDialog;
     }
 }
 

@@ -1,4 +1,11 @@
-﻿using System;
+﻿// Programmer:  Mahesh
+// Student #:   200330980
+// Date:        Feburary 12,2017
+// Course:      COMP 1004
+// Program:     Assignment 2
+// Title:       Sharp Auto Center
+// Description: This program calculates the amount due on a New or Used Vehicle after adding the additional items costs and various functionality
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,169 +19,213 @@ namespace Assignment2
 {
     public partial class SharpAuoForm : Form
     {
+        /// <summary>
+        /// default constructor`
+        /// </summary>
         public SharpAuoForm()
         {
             InitializeComponent();
         }
 
-        private void SharpAuoForm_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void PriceBox_TextChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Handler for the TextChanged event on the BasePrice, OptionBox and AllowanceBox controls
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _PriceBox_TextChanged(object sender, EventArgs e)
         {
             // Cast the sender to a TextBox
             TextBox textSender = (TextBox)sender;
             // Give sender contents proper formatting
-            textSender.Text = FormatCurrency(textSender.Text);
+            textSender.Text = _FormatCurrency(textSender.Text);
             // Move cursor to end of content
             textSender.Select(textSender.Text.Length, 0);
         }
 
-        private void CalculateButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Handler for the Click event on the CalculateButton and calculateToolStripMenuItem controls
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _CalculateButton_Click(object sender, EventArgs e)
         {
-            // local variables
-            double baseAmount;
-            double options;
-            double allowance;
-            double subtotal;
-            double tax;
-            double total;
-            double due;
+            // local instance variables
+            double _baseAmount;
+            double _options;
+            double _allowance;
+            double _subtotal;
+            double _tax;
+            double _total;
+            double _due;
 
             // cast textbox contents into appropriate variables for calculations
             try
             {
-                baseAmount = Convert.ToDouble(SanitizeNumeric(BasePriceBox.Text));
+                _baseAmount = Convert.ToDouble(_SanitizeNumeric(basePriceBox.Text));
             }
             catch
             {
-                baseAmount = 0;
+                _baseAmount = 0;
             }
             try
             {
-                options = Convert.ToDouble(SanitizeNumeric(OptionsBox.Text));
+                _options = Convert.ToDouble(_SanitizeNumeric(optionsBox.Text));
             }
             catch
             {
-                options = 0;
+                _options = 0;
             }
 
             try
             {
-                allowance = Convert.ToDouble(SanitizeNumeric(AllowanceBox.Text));
+                _allowance = Convert.ToDouble(_SanitizeNumeric(allowanceBox.Text));
             }
             catch
             {
-                allowance = 0;
+                _allowance = 0;
             }
 
-            // do the math
-            subtotal = options + baseAmount;
-            tax = calculateTax(subtotal);
-            total = subtotal + tax;
-            due = total - allowance;
+            // do the basic calculations
+            _subtotal = _options + _baseAmount;
+            _tax = _calculateTax(_subtotal);
+            _total = _subtotal + _tax;
+            _due = _total - _allowance;
 
             // output results
-            SubtotalBox.Text = FormatCurrency(Convert.ToString(subtotal));
-            TaxBox.Text = FormatCurrency(Convert.ToString(tax));
-            TotalBox.Text = FormatCurrency(Convert.ToString(total));
-            AmountDueBox.Text = FormatCurrency(Convert.ToString(due));
+            subTotalBox.Text = _FormatCurrency(Convert.ToString(_subtotal));
+            taxBox.Text = _FormatCurrency(Convert.ToString(_tax));
+            totalBox.Text = _FormatCurrency(Convert.ToString(_total));
+            amountDueBox.Text = _FormatCurrency(Convert.ToString(_due));
         }
 
-        private void ClearButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// the clear button clears the text field of different labels 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _ClearButton_Click(object sender, EventArgs e)
         {
             // set all textboxes to default value
-            BasePriceBox.Text = "";
-            OptionsBox.Text = "";
-            SubtotalBox.Text = "";
-            TaxBox.Text = "";
-            TotalBox.Text = "";
-            AllowanceBox.Text = "$0";
-            AmountDueBox.Text = "";
+            basePriceBox.Text = "";
+            optionsBox.Text = "";
+            subTotalBox.Text = "";
+            taxBox.Text = "";
+            totalBox.Text = "";
+            allowanceBox.Text = "$0";
+            amountDueBox.Text = "";
 
             //set all checkbox/radiobuttons to defaults
-            LeatherCheckBox.Checked = false;
-            StereoCheckBox.Checked = false;
-            ComputerCheckBox.Checked = false;
-            StandardRadioButton.Checked = true;
+            leatherCheckBox.Checked = false;
+            stereoCheckBox.Checked = false;
+            nosCheckBox.Checked = false;
+            computerCheckBox.Checked = false;
+            standardRadioButton.Checked = true;
         }
 
-        private void ExitButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// exitbutton_click event handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _ExitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
-        private void CheckedChangedHandler(object sender, EventArgs e)
+        /// <summary>
+        /// checkedChangedHandler for initializing the price of the 
+        /// additional items and the exterior finish
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _CheckedChangedHandler(object sender, EventArgs e)
         {
             // Local variable
             Double optionsTotal = 0;
             // Local constants for accessory prices
-            const double STEREOPRICE = 425.76;
-            const double LEATHERPRICE = 987.41;
-            const double NAVPRICE = 1741.23;
-            const double DETAILPRICE = 599.99;
-            const double PEARLPRICE = 345.72;
+            const double _stereoSystem = 425.76;
+            const double _leatherInterior = 987.41;
+            const double _computerNavigation = 1741.23;
+            const double _nos = 950.25;
+            const double _customizedDetailing = 599.99;
+            const double _pearlized = 345.72;
+            const double _matted = 550.25;
 
             // For every accessory that is checked, add it's price to the optionsTotal
-            if (StereoCheckBox.Checked)
+            if (stereoCheckBox.Checked)
             {
-                optionsTotal += STEREOPRICE;
+                optionsTotal += _stereoSystem;
             }
-            if (LeatherCheckBox.Checked)
+            if (leatherCheckBox.Checked)
             {
-                optionsTotal += LEATHERPRICE;
+                optionsTotal += _leatherInterior;
             }
-            if (ComputerCheckBox.Checked)
+            if (computerCheckBox.Checked)
             {
-                optionsTotal += NAVPRICE;
+                optionsTotal += _computerNavigation;
             }
-            if (DetailingRadioButton.Checked)
+            if (nosCheckBox.Checked)
             {
-                optionsTotal += DETAILPRICE;
+                optionsTotal += _nos;
             }
-            if (PearlizedRadioButton.Checked)
+            if (detailingRadioButton.Checked)
             {
-                optionsTotal += PEARLPRICE;
+                optionsTotal += _customizedDetailing;
             }
-
+            if (pearlizedRadioButton.Checked)
+            {
+                optionsTotal += _pearlized;
+            }
+            if (mattedRadioButton.Checked)
+            {
+                optionsTotal += _matted;
+            }
             // display the total options amount in the appropriate TextBox
-            OptionsBox.Text = FormatCurrency(optionsTotal.ToString());
+            optionsBox.Text = _FormatCurrency(optionsTotal.ToString());
         }
 
-        private double calculateTax(double subtotal)
+        // helper button for calculating the tax
+        private double _calculateTax(double subtotal)
         {
             return subtotal * 0.13;
         }
 
 
-        private void fontToolStripMenuItem_Click(object sender, EventArgs e)
+        private void _fontToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fontDialog1.ShowDialog();
-            BasePriceBox.Font = fontDialog1.Font;
-            AmountDueBox.Font = fontDialog1.Font;
+            //show dialog
+            fontDialog.ShowDialog();
+            basePriceBox.Font = fontDialog.Font;
+            amountDueBox.Font = fontDialog.Font;
         }
 
-        private void colourToolStripMenuItem_Click(object sender, EventArgs e)
+        private void _colourToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            colorDialog1.ShowDialog();
-            BasePriceBox.BackColor = colorDialog1.Color;
-            AmountDueBox.BackColor = colorDialog1.Color;
+            //shows the dialog box for changing the color of he below text fields
+            colorDialog.ShowDialog();
+
+            basePriceBox.BackColor = colorDialog.Color;
+
+            amountDueBox.BackColor = colorDialog.Color;
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This program calculates the amount due on a New or Used Vehicle", "About", MessageBoxButtons.OK);
+            // MessageBox.Show("This program calculates the amount due on a New or Used Vehicle", "About", MessageBoxButtons.OK);
+            //create a new form
+            AboutForm aboutForm = new AboutForm();
+
+            // show the about form with showdialog(a modal method to display the form)
+            aboutForm.ShowDialog();
         }
 
-        // Reused helper functions from Assignment 1
-
-        // FormatCurrency takes an input string and formats it according 
+        
+        // _FormatCurrency takes an input string and formats it according 
         // to standard currency format (e.g. $4,536.74), then returns the
         // formatted string value.
         // Should be refactored
-        private string FormatCurrency(string textValue)
+        private string _FormatCurrency(string textValue)
         {
             if (textValue == "")
             {
@@ -182,7 +233,7 @@ namespace Assignment2
             }
 
             // Strip all non-numeric characters from the string
-            textValue = SanitizeNumeric(textValue);
+            textValue = _SanitizeNumeric(textValue);
 
             // Split the string into two parts, for dollars and cents
             string[] parts = textValue.Split('.');
@@ -222,7 +273,7 @@ namespace Assignment2
             if (cents != "noCents")
             {
                 // If there are cents to add...
-                if (cents.Length == 1 && this.ActiveControl != BasePriceBox && this.ActiveControl != AllowanceBox)
+                if (cents.Length == 1 && this.ActiveControl != basePriceBox && this.ActiveControl != allowanceBox)
                 {
                     // If there's no trailing zero and focus left, add one
                     cents = cents + "0";
@@ -235,11 +286,11 @@ namespace Assignment2
             return formattedCurrency;
         }
 
-        // SanitizeNumeric takes an input string and strips out all 
+        // _SanitizeNumeric takes an input string and strips out all 
         // non-numeric characters while ensuring there are no more
         // than two decimal places in the resulting number.  It then
         // returns this number as a string.
-        private string SanitizeNumeric(string textValue)
+        private string _SanitizeNumeric(string textValue)
         {
             int radixPosition = -1;
             int index = 0;

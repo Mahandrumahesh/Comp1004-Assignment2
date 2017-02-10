@@ -7,3 +7,4 @@ c:\users\hpuser\documents\visual studio 2015\Projects\Assignment2\Assignment2\ob
 c:\users\hpuser\documents\visual studio 2015\Projects\Assignment2\Assignment2\obj\Debug\Assignment2.exe
 c:\users\hpuser\documents\visual studio 2015\Projects\Assignment2\Assignment2\obj\Debug\Assignment2.pdb
 c:\users\hpuser\documents\visual studio 2015\Projects\Assignment2\Assignment2\obj\Debug\Assignment2.SharpAuoForm.resources
+C:\Users\hpuser\documents\visual studio 2015\Projects\Assignment2\Assignment2\obj\Debug\Assignment2.AboutForm.resources
